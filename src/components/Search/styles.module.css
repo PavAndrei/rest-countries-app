@@ -1,0 +1,42 @@
+.searchWrapper {
+  display: flex;
+  gap: 20px;
+
+  padding-top: 20px;
+  padding-left: 20px;
+  border-radius: 8px;
+
+  background-color: var(--dark);
+
+  transition: all 0.3s ease-in-out;
+
+  cursor: text;
+}
+
+.searchWrapper:has(.search:focus) {
+  outline: 1px solid var(--dark-mode-text);
+}
+
+.searchIcon {
+  height: 100%;
+}
+
+.search {
+  height: 100%;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  min-width: 400px;
+
+  color: var(--dark-mode-text);
+}
+
+.search::placeholder {
+  color: var(--dark-mode-text);
+}
+
+.search:active {
+  outline: none;
+}

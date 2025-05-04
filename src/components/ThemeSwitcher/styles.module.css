@@ -1,0 +1,9 @@
+.themeSwitcher {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.text {
+  color: var(--dark-mode-text);
+}
