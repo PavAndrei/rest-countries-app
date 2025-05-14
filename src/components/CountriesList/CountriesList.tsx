@@ -1,24 +1,13 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { CountriesCard } from "../CountriesCard/CountriesCard";
 
 import styles from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCountries } from "../../store/slices/countriesSlice";
+import { useSelector } from "react-redux";
 
 export const CountriesList: FC = () => {
-  const dispatch = useDispatch();
-
   const { countries, isLoading, error } = useSelector(
     (state) => state.countries
   );
-
-  useEffect(() => {
-    dispatch(
-      fetchCountries({ url: "/data/data.json", region: "", keywords: "" })
-    );
-  }, []);
-
-  console.log(countries);
 
   if (isLoading) {
     return <div className="loading">Loading... Please wait...</div>;

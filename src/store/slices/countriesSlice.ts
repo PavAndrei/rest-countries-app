@@ -2,16 +2,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchCountries = createAsyncThunk(
   "countries/fetchCountriesData",
-  async ({ url, region }) => {
+  async ({ url, region, keywords }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
 
-      if (region) {
-        return data.filter((item) => item.region === region);
-      }
+      console.log(region);
+      console.log(keywords);
 
-      return data;
+      const normalizedKeywords = keywords?.toLowerCase().trim();
+
+      const filtered = data.filter((item) => {
+        const matchesRegion = region ? item.region === region : true;
+        const matchesKeywords = normalizedKeywords
+          ? item.name.toLowerCase().includes(normalizedKeywords)
+          : true;
+
+        return matchesRegion && matchesKeywords;
+      });
+
+      return filtered;
     } catch (err) {
       console.log(err);
       throw err;
