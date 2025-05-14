@@ -1,0 +1,7 @@
+.card {
+  background-color: var(--dark);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

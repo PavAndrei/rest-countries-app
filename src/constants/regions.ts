@@ -1,6 +1,6 @@
 export const REGIONS: string[] = [
   "Africa",
-  "America",
+  "Americas",
   "Asia",
   "Europe",
   "Oceania",

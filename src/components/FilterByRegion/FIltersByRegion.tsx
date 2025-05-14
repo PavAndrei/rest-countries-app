@@ -1,25 +1,40 @@
-import { useState } from "react";
-
-import styles from "./styles.module.css";
+import { useEffect, useState } from "react";
 
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 import { REGIONS } from "../../constants/regions";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setRegion } from "../../store/slices/sortSlice";
+import { fetchCountries } from "../../store/slices/countriesSlice";
+
+import styles from "./styles.module.css";
+
 export const FiltersByRegion = () => {
+  const dispatch = useDispatch();
+
+  const { region: selectedRegion } = useSelector((state) => state.sort);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedRegion, setSelectedRegion] = useState<string>();
 
   const toggleRegionList = () => {
     setIsOpen((prev) => !prev);
   };
 
   const selectRegion = (region: string) => {
-    if (region !== selectedRegion) {
-      setSelectedRegion(region);
-      setIsOpen(false);
-    }
+    dispatch(setRegion(region));
+    // setIsOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(
+      fetchCountries({
+        url: "/data/data.json",
+        region: selectedRegion,
+        keywords: "",
+      })
+    );
+  }, [selectedRegion]);
 
   return (
     <div className={styles.filter}>
