@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setRegion } from "../../store/slices/sortSlice";
-import { fetchCountries } from "../../store/slices/countriesSlice";
 
 import styles from "./styles.module.css";
 import { RegionList } from "../RegionsList/RegionList";
+import { useUpdateParams } from "../../hooks/useUpdateParams";
 
 export const FiltersByRegion = () => {
   const dispatch = useDispatch();
+
+  const { updateParam } = useUpdateParams();
 
   const { region: selectedRegion } = useSelector((state) => state.sort);
 
@@ -21,7 +23,10 @@ export const FiltersByRegion = () => {
   };
 
   const selectRegion = (region: string) => {
-    dispatch(setRegion(region));
+    if (region !== selectedRegion) {
+      dispatch(setRegion(region));
+    }
+
     setIsOpen(false);
   };
 

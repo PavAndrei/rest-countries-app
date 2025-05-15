@@ -1,15 +1,23 @@
-import { FC, useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import { FC, useEffect, useRef, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setKeywords } from "../../store/slices/sortSlice";
+
+import styles from "./styles.module.css";
 
 export const Search: FC = () => {
   const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState("");
 
+  const isMount = useRef(false);
+
   useEffect(() => {
+    if (!isMount.current) {
+      isMount.current = true;
+      return;
+    }
+
     const timeout = setTimeout(() => {
       dispatch(setKeywords(searchValue));
     }, 500);

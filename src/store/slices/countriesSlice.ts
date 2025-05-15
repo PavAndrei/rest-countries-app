@@ -7,9 +7,6 @@ export const fetchCountries = createAsyncThunk(
       const response = await fetch(url);
       const data = await response.json();
 
-      console.log(region);
-      console.log(keywords);
-
       const normalizedKeywords = keywords?.toLowerCase().trim();
 
       const filtered = data.filter((item) => {
