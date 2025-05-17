@@ -6,9 +6,8 @@ import styles from "./styles.module.css";
 export const ThemeSwitcher: FC = () => {
   return (
     <div className={styles.themeSwitcher}>
-      <span className={styles.icon}>
-        <IoIosMoon color="var(--dark-mode-text)" size="22px" />
-      </span>
+      <IoIosMoon color="var(--dark-mode-text)" size="30px" />
+
       <div className={styles.text}>Dark Mode</div>
     </div>
   );

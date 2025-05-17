@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/slices/countriesSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { setKeywords, setRegion } from "../store/slices/sortSlice";
+import { Pagination } from "../components/Pagination/Pagination";
 
 export const MainPage = () => {
   const [searchParams] = useSearchParams();
@@ -63,11 +64,10 @@ export const MainPage = () => {
   }, [region, keywords, isInitialized]);
 
   return (
-    <div>
-      <Container>
-        <FiltersBar />
-        <CountriesList />
-      </Container>
-    </div>
+    <>
+      <FiltersBar />
+      <CountriesList />
+      <Pagination />
+    </>
   );
 };

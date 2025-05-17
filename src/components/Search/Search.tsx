@@ -27,9 +27,7 @@ export const Search: FC = () => {
 
   return (
     <label className={styles.searchWrapper}>
-      <span className={styles.searchIcon}>
-        <IoMdSearch color="var(--dark-mode-text)" fontSize="20px" />
-      </span>
+      <IoMdSearch color="var(--dark-mode-text)" fontSize="20px" />
       <input
         className={styles.search}
         type="text"

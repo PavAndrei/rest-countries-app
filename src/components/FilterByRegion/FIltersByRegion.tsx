@@ -5,14 +5,12 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setRegion } from "../../store/slices/sortSlice";
 
-import styles from "./styles.module.css";
 import { RegionList } from "../RegionsList/RegionList";
-import { useUpdateParams } from "../../hooks/useUpdateParams";
+
+import styles from "./styles.module.css";
 
 export const FiltersByRegion = () => {
   const dispatch = useDispatch();
-
-  const { updateParam } = useUpdateParams();
 
   const { region: selectedRegion } = useSelector((state) => state.sort);
 
@@ -33,7 +31,7 @@ export const FiltersByRegion = () => {
   return (
     <div className={styles.filter}>
       <div className={styles.filterLabel} onClick={toggleRegionList}>
-        <span>Filter by Region</span>
+        <span>{selectedRegion ? selectedRegion : "Filter by Region"}</span>
         <MdOutlineArrowForwardIos
           className={isOpen ? styles.rotatedIcon : styles.icon}
         />

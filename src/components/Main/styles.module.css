@@ -1,0 +1,10 @@
+.main {
+}
+
+.mainInner {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  padding-bottom: 50px;
+}

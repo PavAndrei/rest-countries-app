@@ -1,0 +1,28 @@
+.paginationList {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.paginationItem,
+.paginationItemActive {
+  padding: 10px;
+  border-radius: 4px;
+
+  transition: all 0.3s ease-in-out;
+
+  cursor: pointer;
+}
+
+.paginationItem {
+  border: 1px solid var(--light-bg);
+  color: var(--light-bg);
+}
+
+.paginationItemActive {
+  border: 1px solid var(--light-bg);
+  background-color: var(--light-bg);
+  color: var(--dark);
+}

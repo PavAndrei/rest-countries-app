@@ -1,9 +1,10 @@
 .searchWrapper {
   display: flex;
+  align-items: center;
   gap: 20px;
 
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 15px 20px;
+
   border-radius: 8px;
 
   background-color: var(--dark);
@@ -17,16 +18,12 @@
   outline: 1px solid var(--dark-mode-text);
 }
 
-.searchIcon {
-  height: 100%;
-}
-
 .search {
-  height: 100%;
-
   border: none;
   outline: none;
   background-color: transparent;
+
+  font-size: 16px;
 
   min-width: 400px;
 
@@ -35,6 +32,7 @@
 
 .search::placeholder {
   color: var(--dark-mode-text);
+  font-size: 16px;
 }
 
 .search:active {

@@ -1,0 +1,35 @@
+.filtersList {
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  left: 0;
+
+  border-radius: 8px;
+  background-color: var(--dark);
+
+  padding: 15px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterItem,
+.filterItemActive {
+  color: var(--dark-mode-text);
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.filterItem {
+  text-decoration-color: transparent;
+  font-size: 16px;
+}
+
+.filterItemActive {
+  text-decoration-color: var(--dark-mode-text);
+}

@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   keywords: "",
   region: "",
+  currentPage: 1,
+  itemsPerPage: 12,
 };
 
 const sortSlice = createSlice({
@@ -11,9 +13,15 @@ const sortSlice = createSlice({
   reducers: {
     setKeywords(state, action) {
       state.keywords = action.payload;
+      state.currentPage = 1;
     },
     setRegion(state, action) {
       state.region = action.payload;
+      state.currentPage = 1;
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+      // Должно обязательно быть числом (action.payload);
     },
   },
 });
@@ -21,6 +29,6 @@ const sortSlice = createSlice({
 // export const selectFilter = (state) => state.filter;
 // export const selectSort = (state) => state.filter.sort;
 
-export const { setKeywords, setRegion } = sortSlice.actions;
+export const { setKeywords, setRegion, setCurrentPage } = sortSlice.actions;
 
 export default sortSlice.reducer;
