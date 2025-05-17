@@ -5,7 +5,11 @@ import { FiltersBar } from "../components/FiltersBar/FiltersBar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/slices/countriesSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { setKeywords, setRegion } from "../store/slices/sortSlice";
+import {
+  setCurrentPage,
+  setKeywords,
+  setRegion,
+} from "../store/slices/sortSlice";
 import { Pagination } from "../components/Pagination/Pagination";
 
 export const MainPage = () => {
@@ -18,7 +22,7 @@ export const MainPage = () => {
 
   const [isInitialized, setIsInitialized] = useState(false);
 
-  const { region, keywords } = useSelector((state) => state.sort);
+  const { region, keywords, currentPage } = useSelector((state) => state.sort);
 
   const dispatchCountriesData = (url) => {
     dispatch(
@@ -40,9 +44,10 @@ export const MainPage = () => {
 
     if (region) query.set("region", region);
     if (keywords) query.set("keywords", keywords);
+    if (currentPage) query.set("page", String(currentPage));
 
     navigate(`/?${query.toString()}`);
-  }, [region, keywords]);
+  }, [region, keywords, currentPage]);
 
   useEffect(() => {
     const params = Object.fromEntries(searchParams.entries());
@@ -52,6 +57,9 @@ export const MainPage = () => {
     }
     if (params.keywords) {
       dispatch(setKeywords(params.keywords));
+    }
+    if (params.page) {
+      dispatch(setCurrentPage(Number(params.page)));
     }
 
     setIsInitialized(true);
