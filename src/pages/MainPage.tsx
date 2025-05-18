@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Container } from "../components/Container/Container";
 import { CountriesList } from "../components/CountriesList/CountriesList";
 import { FiltersBar } from "../components/FiltersBar/FiltersBar";
 import { useDispatch, useSelector } from "react-redux";
