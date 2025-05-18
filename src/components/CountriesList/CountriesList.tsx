@@ -5,6 +5,7 @@ import { CountriesCard } from "../CountriesCard/CountriesCard";
 import { useSelector } from "react-redux";
 
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 export const CountriesList: FC = () => {
   const { countries, isLoading, error } = useSelector(
@@ -29,7 +30,11 @@ export const CountriesList: FC = () => {
     <ul className={styles.list}>
       {countries &&
         paginated.map((country) => {
-          return <CountriesCard key={country.name} {...country} />;
+          return (
+            <Link to={`/country/${country.alpha3Code}`} key={country.name}>
+              <CountriesCard {...country} />
+            </Link>
+          );
         })}
     </ul>
   );

@@ -21,14 +21,15 @@ const sortSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
-      // Должно обязательно быть числом (action.payload);
     },
+    resetFilters: () => initialState,
   },
 });
 
 // export const selectFilter = (state) => state.filter;
 // export const selectSort = (state) => state.filter.sort;
 
-export const { setKeywords, setRegion, setCurrentPage } = sortSlice.actions;
+export const { setKeywords, setRegion, setCurrentPage, resetFilters } =
+  sortSlice.actions;
 
 export default sortSlice.reducer;
